@@ -31,5 +31,20 @@ namespace App
         {
 
         }
+
+        private void authorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://vk.com/id73114955");
+        }
+
+        private void sourceCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ZakharovP/InnovationScorecard");
+        }
+
+        private void sourceDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.cta.tech/Policy/Innovation-Scorecard/International/Data.aspx");
+        }
     }
 }

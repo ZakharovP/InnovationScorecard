@@ -63,12 +63,12 @@
             this.CountryScoreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ScoreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SelectButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.FilterScoreButton = new System.Windows.Forms.Button();
+            this.DeleteScoreButton = new System.Windows.Forms.Button();
+            this.AddParamButton = new System.Windows.Forms.Button();
+            this.UpdateParamButton = new System.Windows.Forms.Button();
+            this.FilterParamButton = new System.Windows.Forms.Button();
+            this.DeleteParamButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParamDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScoreDataGridView)).BeginInit();
@@ -114,18 +114,21 @@
             this.authorToolStripMenuItem.Name = "authorToolStripMenuItem";
             this.authorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.authorToolStripMenuItem.Text = "Author";
+            this.authorToolStripMenuItem.Click += new System.EventHandler(this.authorToolStripMenuItem_Click);
             // 
             // sourceCodeToolStripMenuItem
             // 
             this.sourceCodeToolStripMenuItem.Name = "sourceCodeToolStripMenuItem";
             this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sourceCodeToolStripMenuItem.Text = "Source code";
+            this.sourceCodeToolStripMenuItem.Click += new System.EventHandler(this.sourceCodeToolStripMenuItem_Click);
             // 
             // sourceDataToolStripMenuItem
             // 
             this.sourceDataToolStripMenuItem.Name = "sourceDataToolStripMenuItem";
             this.sourceDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sourceDataToolStripMenuItem.Text = "Source data";
+            this.sourceDataToolStripMenuItem.Click += new System.EventHandler(this.sourceDataToolStripMenuItem_Click);
             // 
             // newToolStripMenuItem
             // 
@@ -334,71 +337,71 @@
             this.SelectButton.UseVisualStyleBackColor = true;
             this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
             // 
-            // button1
+            // FilterScoreButton
             // 
-            this.button1.Location = new System.Drawing.Point(774, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.FilterScoreButton.Location = new System.Drawing.Point(774, 33);
+            this.FilterScoreButton.Name = "FilterScoreButton";
+            this.FilterScoreButton.Size = new System.Drawing.Size(75, 23);
+            this.FilterScoreButton.TabIndex = 4;
+            this.FilterScoreButton.Text = "Filter";
+            this.FilterScoreButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // DeleteScoreButton
             // 
-            this.button2.Location = new System.Drawing.Point(855, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.DeleteScoreButton.Location = new System.Drawing.Point(855, 33);
+            this.DeleteScoreButton.Name = "DeleteScoreButton";
+            this.DeleteScoreButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteScoreButton.TabIndex = 5;
+            this.DeleteScoreButton.Text = "Delete";
+            this.DeleteScoreButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // AddParamButton
             // 
-            this.button3.Location = new System.Drawing.Point(12, 33);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.AddParamButton.Location = new System.Drawing.Point(12, 33);
+            this.AddParamButton.Name = "AddParamButton";
+            this.AddParamButton.Size = new System.Drawing.Size(75, 23);
+            this.AddParamButton.TabIndex = 6;
+            this.AddParamButton.Text = "Add";
+            this.AddParamButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // UpdateParamButton
             // 
-            this.button4.Location = new System.Drawing.Point(94, 33);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.UpdateParamButton.Location = new System.Drawing.Point(94, 33);
+            this.UpdateParamButton.Name = "UpdateParamButton";
+            this.UpdateParamButton.Size = new System.Drawing.Size(75, 23);
+            this.UpdateParamButton.TabIndex = 7;
+            this.UpdateParamButton.Text = "Update";
+            this.UpdateParamButton.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // FilterParamButton
             // 
-            this.button5.Location = new System.Drawing.Point(176, 33);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.FilterParamButton.Location = new System.Drawing.Point(176, 33);
+            this.FilterParamButton.Name = "FilterParamButton";
+            this.FilterParamButton.Size = new System.Drawing.Size(75, 23);
+            this.FilterParamButton.TabIndex = 8;
+            this.FilterParamButton.Text = "Filter";
+            this.FilterParamButton.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // DeleteParamButton
             // 
-            this.button6.Location = new System.Drawing.Point(258, 33);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.DeleteParamButton.Location = new System.Drawing.Point(258, 33);
+            this.DeleteParamButton.Name = "DeleteParamButton";
+            this.DeleteParamButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteParamButton.TabIndex = 9;
+            this.DeleteParamButton.Text = "Delete";
+            this.DeleteParamButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 402);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.DeleteParamButton);
+            this.Controls.Add(this.FilterParamButton);
+            this.Controls.Add(this.UpdateParamButton);
+            this.Controls.Add(this.AddParamButton);
+            this.Controls.Add(this.DeleteScoreButton);
+            this.Controls.Add(this.FilterScoreButton);
             this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.ScoreDataGridView);
             this.Controls.Add(this.ParamDataGridView);
@@ -455,12 +458,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CountryScoreColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ScoreColumn;
         private System.Windows.Forms.Button SelectButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button FilterScoreButton;
+        private System.Windows.Forms.Button DeleteScoreButton;
+        private System.Windows.Forms.Button AddParamButton;
+        private System.Windows.Forms.Button UpdateParamButton;
+        private System.Windows.Forms.Button FilterParamButton;
+        private System.Windows.Forms.Button DeleteParamButton;
     }
 }
 
