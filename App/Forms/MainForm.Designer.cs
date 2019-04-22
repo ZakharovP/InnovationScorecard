@@ -1,4 +1,6 @@
-﻿namespace App
+﻿using Lib;
+
+namespace App
 {
     partial class MainForm
     {
@@ -174,10 +176,7 @@
             // 
             // ParamDataGridView
             // 
-            this.ParamDataGridView.AllowUserToAddRows = false;
-            this.ParamDataGridView.AllowUserToDeleteRows = false;
-            this.ParamDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ParamDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            var paramColumns = new System.Windows.Forms.DataGridViewColumn[] {
             this.CountryColumn,
             this.DiversityColumn,
             this.FreedomColumn,
@@ -192,7 +191,11 @@
             this.RidesharingColumn,
             this.ShortTermRentalsColumn,
             this.SelfDrivingVehiclesColumn,
-            this.EnvironmentColumn});
+            this.EnvironmentColumn};
+            this.ParamDataGridView.AllowUserToAddRows = false;
+            this.ParamDataGridView.AllowUserToDeleteRows = false;
+            this.ParamDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ParamDataGridView.Columns.AddRange(paramColumns);
             this.ParamDataGridView.Location = new System.Drawing.Point(12, 62);
             this.ParamDataGridView.Name = "ParamDataGridView";
             this.ParamDataGridView.ReadOnly = true;
@@ -203,96 +206,21 @@
             // 
             // CountryColumn
             // 
-            this.CountryColumn.HeaderText = "Country";
-            this.CountryColumn.Name = "CountryColumn";
+            this.CountryColumn.HeaderText = Utils.CountryParam.Text;
+            this.CountryColumn.Name = Utils.CountryParam.Name;
             this.CountryColumn.ReadOnly = true;
-            this.CountryColumn.ToolTipText = "Country name";
+            this.CountryColumn.ToolTipText = Utils.CountryParam.Description;
             // 
-            // DiversityColumn
+            // Columns
             // 
-            this.DiversityColumn.HeaderText = "Diversity";
-            this.DiversityColumn.Name = "DiversityColumn";
-            this.DiversityColumn.ReadOnly = true;
-            this.DiversityColumn.ToolTipText = "Diversity  measures the concentrations of various ethnic groups within a country." +
-    "";
-            // 
-            // FreedomColumn
-            // 
-            this.FreedomColumn.HeaderText = "Freedom";
-            this.FreedomColumn.Name = "FreedomColumn";
-            this.FreedomColumn.ReadOnly = true;
-            // 
-            // BroadbandColumn
-            // 
-            this.BroadbandColumn.HeaderText = "Broadband";
-            this.BroadbandColumn.Name = "BroadbandColumn";
-            this.BroadbandColumn.ReadOnly = true;
-            // 
-            // HumanCapitalColumn
-            // 
-            this.HumanCapitalColumn.HeaderText = "HumanCapital";
-            this.HumanCapitalColumn.Name = "HumanCapitalColumn";
-            this.HumanCapitalColumn.ReadOnly = true;
-            // 
-            // TaxFriendlinessColumn
-            // 
-            this.TaxFriendlinessColumn.HeaderText = "Tax Friendliness";
-            this.TaxFriendlinessColumn.Name = "TaxFriendlinessColumn";
-            this.TaxFriendlinessColumn.ReadOnly = true;
-            // 
-            // RDInvestmentColumn
-            // 
-            this.RDInvestmentColumn.HeaderText = "R&D Investment";
-            this.RDInvestmentColumn.Name = "RDInvestmentColumn";
-            this.RDInvestmentColumn.ReadOnly = true;
-            // 
-            // EntrepreneurialActivityColumn
-            // 
-            this.EntrepreneurialActivityColumn.HeaderText = "Entrepreneurial Activity";
-            this.EntrepreneurialActivityColumn.Name = "EntrepreneurialActivityColumn";
-            this.EntrepreneurialActivityColumn.ReadOnly = true;
-            // 
-            // UnicornsColumn
-            // 
-            this.UnicornsColumn.HeaderText = "Unicorns";
-            this.UnicornsColumn.Name = "UnicornsColumn";
-            this.UnicornsColumn.ReadOnly = true;
-            // 
-            // ResilienceColumn
-            // 
-            this.ResilienceColumn.HeaderText = "Resilience";
-            this.ResilienceColumn.Name = "ResilienceColumn";
-            this.ResilienceColumn.ReadOnly = true;
-            // 
-            // DronesColumn
-            // 
-            this.DronesColumn.HeaderText = "Drones";
-            this.DronesColumn.Name = "DronesColumn";
-            this.DronesColumn.ReadOnly = true;
-            // 
-            // RidesharingColumn
-            // 
-            this.RidesharingColumn.HeaderText = "Ridesharing";
-            this.RidesharingColumn.Name = "RidesharingColumn";
-            this.RidesharingColumn.ReadOnly = true;
-            // 
-            // ShortTermRentalsColumn
-            // 
-            this.ShortTermRentalsColumn.HeaderText = "Short-Term Rentals";
-            this.ShortTermRentalsColumn.Name = "ShortTermRentalsColumn";
-            this.ShortTermRentalsColumn.ReadOnly = true;
-            // 
-            // SelfDrivingVehiclesColumn
-            // 
-            this.SelfDrivingVehiclesColumn.HeaderText = "Self Driving Vehicles";
-            this.SelfDrivingVehiclesColumn.Name = "SelfDrivingVehiclesColumn";
-            this.SelfDrivingVehiclesColumn.ReadOnly = true;
-            // 
-            // EnvironmentColumn
-            // 
-            this.EnvironmentColumn.HeaderText = "Environment";
-            this.EnvironmentColumn.Name = "EnvironmentColumn";
-            this.EnvironmentColumn.ReadOnly = true;
+            for (int i=1; i<paramColumns.Length; i++)
+            {
+                paramColumns[i].HeaderText = Utils.Categories[i - 1].Text;
+                paramColumns[i].Name = Utils.Categories[i - 1].Name;
+                paramColumns[i].ReadOnly = true;
+                paramColumns[i].ToolTipText = Utils.Categories[i - 1].Description;
+            }
+            
             // 
             // ScoreDataGridView
             // 
@@ -311,21 +239,24 @@
             // 
             // RankColumn
             // 
-            this.RankColumn.HeaderText = "Rank";
-            this.RankColumn.Name = "RankColumn";
+            this.RankColumn.HeaderText = Utils.Rank.Text;
+            this.RankColumn.Name = Utils.Rank.Name;
             this.RankColumn.ReadOnly = true;
+            this.RankColumn.ToolTipText = Utils.Rank.Description;
             // 
             // CountryScoreColumn
             // 
-            this.CountryScoreColumn.HeaderText = "Country";
-            this.CountryScoreColumn.Name = "CountryScoreColumn";
+            this.CountryScoreColumn.HeaderText = Utils.CountryScore.Text;
+            this.CountryScoreColumn.Name = Utils.CountryScore.Name;
             this.CountryScoreColumn.ReadOnly = true;
+            this.CountryScoreColumn.ToolTipText = Utils.CountryScore.Description;
             // 
             // ScoreColumn
             // 
-            this.ScoreColumn.HeaderText = "Score";
-            this.ScoreColumn.Name = "ScoreColumn";
+            this.ScoreColumn.HeaderText = Utils.Score.Text;
+            this.ScoreColumn.Name = Utils.Score.Name;
             this.ScoreColumn.ReadOnly = true;
+            this.ScoreColumn.ToolTipText = Utils.Score.Description;
             // 
             // SelectButton
             // 
