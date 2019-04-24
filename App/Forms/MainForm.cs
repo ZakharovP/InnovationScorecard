@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace App
+namespace App.Forms
 {
     public partial class MainForm : Form
     {
@@ -42,7 +42,13 @@ namespace App
 
         private void SelectButton_Click(object sender, EventArgs e)
         {
-
+            bool[] scoreFilter = table.GetScoreFilter();
+            SelectForm form = new SelectForm(scoreFilter);
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                table.SetScoreFilter(form.ScoreFilter);
+            }
         }
 
         private void authorToolStripMenuItem_Click(object sender, EventArgs e)

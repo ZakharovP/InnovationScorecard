@@ -1,6 +1,6 @@
 ﻿using Lib;
 
-namespace App
+namespace App.Forms
 {
     partial class MainForm
     {

@@ -113,5 +113,22 @@ namespace App.Server
             }
             UpdateScoreTable();
         }
+        public bool[] GetScoreFilter()
+        {
+            bool[] x = new bool[scoreFilter.Length];
+            for (int i=0; i<scoreFilter.Length; i++)
+            {
+                x[i] = scoreFilter[i];
+            }
+            return x;
+        }
+        public void SetScoreFilter(bool[] newScoreFilter)
+        {
+            for (int i = 0; i < scoreFilter.Length; i++)
+            {
+                scoreFilter[i] = newScoreFilter[i];
+            }
+            UpdateScoreTable();
+        }
     }
 }
