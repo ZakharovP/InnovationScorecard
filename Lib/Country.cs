@@ -42,5 +42,57 @@ namespace Lib
             SelfDrivingVehicles = grades[(int)CategoryEnum.SelfDrivingVehicles];
             Environment = grades[(int)CategoryEnum.Environment];
         }
+        public Grade[] GetGrades()
+        {
+            return new Grade[]
+            {
+                Diversity,
+                Freedom,
+                Broadband,
+                HumanCapital,
+                TaxFriendliness,
+                RDInvestment,
+                EntrepreneurialActivity,
+                Unicorns,
+                Resilience,
+                Drones,
+                Ridesharing,
+                ShortTermRentals,
+                SelfDrivingVehicles,
+                Environment
+            };
+        }
+        public double GetScore(Boolean[] take = null)
+        {
+            Grade[] grades = GetGrades();
+            int s = 0, n = 0;
+            if (take == null)
+            {
+                for (int i=0; i<grades.Length; i++)
+                {
+                    s += grades[i].Score;
+                }
+                n = grades.Length;
+            }
+            else
+            {
+                for (int i = 0; i < grades.Length; i++)
+                {
+                    if (take[i])
+                    {
+                        s += grades[i].Score;
+                        n++;
+                    }
+                }
+            }
+            if (n == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return (double)s / n;
+            }
+        }
     }
 }

@@ -33,10 +33,6 @@ namespace App
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.authorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sourceDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openResentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +40,10 @@ namespace App
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.authorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sourceDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParamDataGridView = new System.Windows.Forms.DataGridView();
             this.CountryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiversityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +101,48 @@ namespace App
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.newToolStripMenuItem.Text = "New";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // openResentToolStripMenuItem
+            // 
+            this.openResentToolStripMenuItem.Name = "openResentToolStripMenuItem";
+            this.openResentToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openResentToolStripMenuItem.Text = "Open Resent";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As";
+            // 
+            // clearRegistryToolStripMenuItem
+            // 
+            this.clearRegistryToolStripMenuItem.Name = "clearRegistryToolStripMenuItem";
+            this.clearRegistryToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.clearRegistryToolStripMenuItem.Text = "Clear Registry";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -114,88 +156,29 @@ namespace App
             // authorToolStripMenuItem
             // 
             this.authorToolStripMenuItem.Name = "authorToolStripMenuItem";
-            this.authorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.authorToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.authorToolStripMenuItem.Text = "Author";
             this.authorToolStripMenuItem.Click += new System.EventHandler(this.authorToolStripMenuItem_Click);
             // 
             // sourceCodeToolStripMenuItem
             // 
             this.sourceCodeToolStripMenuItem.Name = "sourceCodeToolStripMenuItem";
-            this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.sourceCodeToolStripMenuItem.Text = "Source code";
             this.sourceCodeToolStripMenuItem.Click += new System.EventHandler(this.sourceCodeToolStripMenuItem_Click);
             // 
             // sourceDataToolStripMenuItem
             // 
             this.sourceDataToolStripMenuItem.Name = "sourceDataToolStripMenuItem";
-            this.sourceDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sourceDataToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.sourceDataToolStripMenuItem.Text = "Source data";
             this.sourceDataToolStripMenuItem.Click += new System.EventHandler(this.sourceDataToolStripMenuItem_Click);
             // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            // 
-            // openResentToolStripMenuItem
-            // 
-            this.openResentToolStripMenuItem.Name = "openResentToolStripMenuItem";
-            this.openResentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openResentToolStripMenuItem.Text = "Open Resent";
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveAsToolStripMenuItem.Text = "Save As";
-            // 
-            // clearRegistryToolStripMenuItem
-            // 
-            this.clearRegistryToolStripMenuItem.Name = "clearRegistryToolStripMenuItem";
-            this.clearRegistryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.clearRegistryToolStripMenuItem.Text = "Clear Registry";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
             // ParamDataGridView
             // 
-            var paramColumns = new System.Windows.Forms.DataGridViewColumn[] {
-            this.CountryColumn,
-            this.DiversityColumn,
-            this.FreedomColumn,
-            this.BroadbandColumn,
-            this.HumanCapitalColumn,
-            this.TaxFriendlinessColumn,
-            this.RDInvestmentColumn,
-            this.EntrepreneurialActivityColumn,
-            this.UnicornsColumn,
-            this.ResilienceColumn,
-            this.DronesColumn,
-            this.RidesharingColumn,
-            this.ShortTermRentalsColumn,
-            this.SelfDrivingVehiclesColumn,
-            this.EnvironmentColumn};
             this.ParamDataGridView.AllowUserToAddRows = false;
             this.ParamDataGridView.AllowUserToDeleteRows = false;
             this.ParamDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ParamDataGridView.Columns.AddRange(paramColumns);
             this.ParamDataGridView.Location = new System.Drawing.Point(12, 62);
             this.ParamDataGridView.Name = "ParamDataGridView";
             this.ParamDataGridView.ReadOnly = true;
@@ -206,31 +189,69 @@ namespace App
             // 
             // CountryColumn
             // 
-            this.CountryColumn.HeaderText = Utils.CountryParam.Text;
-            this.CountryColumn.Name = Utils.CountryParam.Name;
-            this.CountryColumn.ReadOnly = true;
-            this.CountryColumn.ToolTipText = Utils.CountryParam.Description;
+            this.CountryColumn.Name = "CountryColumn";
             // 
-            // Columns
+            // DiversityColumn
             // 
-            for (int i=1; i<paramColumns.Length; i++)
-            {
-                paramColumns[i].HeaderText = Utils.Categories[i - 1].Text;
-                paramColumns[i].Name = Utils.Categories[i - 1].Name;
-                paramColumns[i].ReadOnly = true;
-                paramColumns[i].ToolTipText = Utils.Categories[i - 1].Description;
-            }
-            
+            this.DiversityColumn.Name = "DiversityColumn";
+            // 
+            // FreedomColumn
+            // 
+            this.FreedomColumn.Name = "FreedomColumn";
+            // 
+            // BroadbandColumn
+            // 
+            this.BroadbandColumn.Name = "BroadbandColumn";
+            // 
+            // HumanCapitalColumn
+            // 
+            this.HumanCapitalColumn.Name = "HumanCapitalColumn";
+            // 
+            // TaxFriendlinessColumn
+            // 
+            this.TaxFriendlinessColumn.Name = "TaxFriendlinessColumn";
+            // 
+            // RDInvestmentColumn
+            // 
+            this.RDInvestmentColumn.Name = "RDInvestmentColumn";
+            // 
+            // EntrepreneurialActivityColumn
+            // 
+            this.EntrepreneurialActivityColumn.Name = "EntrepreneurialActivityColumn";
+            // 
+            // UnicornsColumn
+            // 
+            this.UnicornsColumn.Name = "UnicornsColumn";
+            // 
+            // ResilienceColumn
+            // 
+            this.ResilienceColumn.Name = "ResilienceColumn";
+            // 
+            // DronesColumn
+            // 
+            this.DronesColumn.Name = "DronesColumn";
+            // 
+            // RidesharingColumn
+            // 
+            this.RidesharingColumn.Name = "RidesharingColumn";
+            // 
+            // ShortTermRentalsColumn
+            // 
+            this.ShortTermRentalsColumn.Name = "ShortTermRentalsColumn";
+            // 
+            // SelfDrivingVehiclesColumn
+            // 
+            this.SelfDrivingVehiclesColumn.Name = "SelfDrivingVehiclesColumn";
+            // 
+            // EnvironmentColumn
+            // 
+            this.EnvironmentColumn.Name = "EnvironmentColumn";
             // 
             // ScoreDataGridView
             // 
             this.ScoreDataGridView.AllowUserToAddRows = false;
             this.ScoreDataGridView.AllowUserToDeleteRows = false;
             this.ScoreDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ScoreDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RankColumn,
-            this.CountryScoreColumn,
-            this.ScoreColumn});
             this.ScoreDataGridView.Location = new System.Drawing.Point(775, 62);
             this.ScoreDataGridView.Name = "ScoreDataGridView";
             this.ScoreDataGridView.ReadOnly = true;
@@ -239,24 +260,24 @@ namespace App
             // 
             // RankColumn
             // 
-            this.RankColumn.HeaderText = Utils.Rank.Text;
-            this.RankColumn.Name = Utils.Rank.Name;
+            this.RankColumn.HeaderText = "Rank";
+            this.RankColumn.Name = "RankColumn";
             this.RankColumn.ReadOnly = true;
-            this.RankColumn.ToolTipText = Utils.Rank.Description;
+            this.RankColumn.ToolTipText = "Position of the country in the sorted list by score.";
             // 
             // CountryScoreColumn
             // 
-            this.CountryScoreColumn.HeaderText = Utils.CountryScore.Text;
-            this.CountryScoreColumn.Name = Utils.CountryScore.Name;
+            this.CountryScoreColumn.HeaderText = "Country";
+            this.CountryScoreColumn.Name = "CountryScoreColumn";
             this.CountryScoreColumn.ReadOnly = true;
-            this.CountryScoreColumn.ToolTipText = Utils.CountryScore.Description;
+            this.CountryScoreColumn.ToolTipText = "Country name.";
             // 
             // ScoreColumn
             // 
-            this.ScoreColumn.HeaderText = Utils.Score.Text;
-            this.ScoreColumn.Name = Utils.Score.Name;
+            this.ScoreColumn.HeaderText = "Score";
+            this.ScoreColumn.Name = "ScoreColumn";
             this.ScoreColumn.ReadOnly = true;
-            this.ScoreColumn.ToolTipText = Utils.Score.Description;
+            this.ScoreColumn.ToolTipText = "Score measures an average score through all selected categories.";
             // 
             // SelectButton
             // 
@@ -285,6 +306,7 @@ namespace App
             this.DeleteScoreButton.TabIndex = 5;
             this.DeleteScoreButton.Text = "Delete";
             this.DeleteScoreButton.UseVisualStyleBackColor = true;
+            this.DeleteScoreButton.Click += new System.EventHandler(this.DeleteScoreButton_Click);
             // 
             // AddParamButton
             // 
@@ -321,6 +343,7 @@ namespace App
             this.DeleteParamButton.TabIndex = 9;
             this.DeleteParamButton.Text = "Delete";
             this.DeleteParamButton.UseVisualStyleBackColor = true;
+            this.DeleteParamButton.Click += new System.EventHandler(this.DeleteParamButton_Click);
             // 
             // MainForm
             // 
@@ -343,7 +366,7 @@ namespace App
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "2019 International Innovation Scorecard";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Form_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParamDataGridView)).EndInit();

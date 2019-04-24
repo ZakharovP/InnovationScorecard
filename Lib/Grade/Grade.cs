@@ -4,6 +4,7 @@
     {
         public MainGrade Main;
         public SubGrade Sub;
+        public int Score => 3 * (int)Main + (int)Sub;
         protected Grade() { } 
         public Grade(int value)
         {
