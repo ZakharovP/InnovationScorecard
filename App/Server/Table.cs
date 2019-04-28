@@ -203,5 +203,20 @@ namespace App.Server
             }
             Remove(names.ToArray());
         }
+        public void GetCountry(DataRow row, out Country country)
+        {
+            string name = (string)row[Utils.CountryParam.Text];
+            country = countries[name];
+        }
+        public void UpdateCountry(string name, Grade[] newGrades)
+        {
+            Country c = new Country(name, newGrades);
+            countries[name] = c;
+            for (int i = 0; i < newGrades.Length; i++)
+            {
+                paramTableName2Rows[name][Utils.Categories[i].Text] = newGrades[i].Score;
+            }
+            UpdateScoreTable();
+        }
     }
 }

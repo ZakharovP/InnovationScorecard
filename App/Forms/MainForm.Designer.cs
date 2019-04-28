@@ -327,6 +327,7 @@ namespace App.Forms
             this.UpdateParamButton.TabIndex = 7;
             this.UpdateParamButton.Text = "Update";
             this.UpdateParamButton.UseVisualStyleBackColor = true;
+            this.UpdateParamButton.Click += new System.EventHandler(this.UpdateParamButton_Click);
             // 
             // FilterParamButton
             // 

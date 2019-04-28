@@ -138,5 +138,24 @@ namespace App.Forms
 
             }
         }
+
+        private void UpdateParamButton_Click(object sender, EventArgs e)
+        {
+            if (ParamDataGridView.SelectedRows.Count == 1)
+            {
+                Country country;
+                table.GetCountry(((DataRowView)ParamDataGridView.SelectedRows[0].DataBoundItem).Row, out country);
+                UpdateForm form = new UpdateForm(country);
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    table.UpdateCountry(country.Name, form.Grades);
+                }
+            }
+            else
+            {
+                MessageBox.Show(@"Update: please select one row", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
