@@ -123,5 +123,20 @@ namespace App.Forms
                 table.Filter(form.MinCountry, form.MaxCountry);
             }
         }
+
+        private void AddParamButton_Click(object sender, EventArgs e)
+        {
+            AddForm form = new AddForm();
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                bool r = table.Add(new Country[] { form.NewCountry });
+                if (!r)
+                {
+                    MessageBox.Show(@"Add: country with such name already exists", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+        }
     }
 }

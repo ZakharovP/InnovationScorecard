@@ -317,6 +317,7 @@ namespace App.Forms
             this.AddParamButton.TabIndex = 6;
             this.AddParamButton.Text = "Add";
             this.AddParamButton.UseVisualStyleBackColor = true;
+            this.AddParamButton.Click += new System.EventHandler(this.AddParamButton_Click);
             // 
             // UpdateParamButton
             // 
