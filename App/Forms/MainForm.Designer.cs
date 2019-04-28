@@ -297,6 +297,7 @@ namespace App.Forms
             this.FilterScoreButton.TabIndex = 4;
             this.FilterScoreButton.Text = "Filter";
             this.FilterScoreButton.UseVisualStyleBackColor = true;
+            this.FilterScoreButton.Click += new System.EventHandler(this.FilterScoreButton_Click);
             // 
             // DeleteScoreButton
             // 

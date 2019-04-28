@@ -122,13 +122,39 @@ namespace App.Server
             }
             return x;
         }
-        public void SetScoreFilter(bool[] newScoreFilter)
+        public void Filter(bool[] newScoreFilter)
         {
             for (int i = 0; i < scoreFilter.Length; i++)
             {
                 scoreFilter[i] = newScoreFilter[i];
             }
             UpdateScoreTable();
+        }
+        public void Filter(double minScore, double maxScore)
+        {
+            List<string> names = new List<string>();
+            double score;
+            foreach (KeyValuePair<string, Country> kv in countries)
+            {
+                score = kv.Value.GetScore(scoreFilter);
+                if (score < minScore || score > maxScore)
+                {
+                    names.Add(kv.Key);
+                }
+            }
+            Remove(names.ToArray());
+        }
+        public void GetMinMaxScore(out double minScore, out double maxScore)
+        {
+            double[] scores = new double[countries.Count];
+            int j = 0;
+            foreach (KeyValuePair<string, Country> kv in countries)
+            {
+                scores[j] = kv.Value.GetScore(scoreFilter);
+                j = j + 1;
+            }
+            minScore = scores.Min();
+            maxScore = scores.Max();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace App.Forms
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                table.SetScoreFilter(form.ScoreFilter);
+                table.Filter(form.ScoreFilter);
             }
         }
 
@@ -97,6 +97,18 @@ namespace App.Forms
             else
             {
                 MessageBox.Show(@"Delete: please select at least one row", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void FilterScoreButton_Click(object sender, EventArgs e)
+        {
+            double minScore, maxScore;
+            table.GetMinMaxScore(out minScore, out maxScore);
+            ScoreFilterForm form = new ScoreFilterForm(minScore, maxScore);
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                table.Filter(form.MinScore, form.MaxScore);
             }
         }
     }

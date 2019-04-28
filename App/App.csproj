@@ -52,6 +52,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ScoreFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ScoreFilterForm.Designer.cs">
+      <DependentUpon>ScoreFilterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="Server\Table.cs" />
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ScoreFilterForm.resx">
+      <DependentUpon>ScoreFilterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectForm.resx">
       <DependentUpon>SelectForm.cs</DependentUpon>
