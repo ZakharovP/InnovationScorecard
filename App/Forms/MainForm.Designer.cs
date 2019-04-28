@@ -335,6 +335,7 @@ namespace App.Forms
             this.FilterParamButton.TabIndex = 8;
             this.FilterParamButton.Text = "Filter";
             this.FilterParamButton.UseVisualStyleBackColor = true;
+            this.FilterParamButton.Click += new System.EventHandler(this.FilterParamButton_Click);
             // 
             // DeleteParamButton
             // 

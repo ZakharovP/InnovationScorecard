@@ -19,7 +19,7 @@ namespace App.Server
         private Dictionary<string, Country> countries = new Dictionary<string, Country>();
         private Dictionary<string, DataRow> paramTableName2Rows = new Dictionary<string, DataRow>();
         private Dictionary<string, DataRow> scoreTableName2Rows = new Dictionary<string, DataRow>();
-        private bool[] scoreFilter = new bool[Utils.Categories.Length]; 
+        private bool[] scoreFilter = new bool[Utils.Categories.Length];
         public Table(DataGridView paramDataGridView, DataGridView scoreDataGridView)
         {
             ParamTable = new DataTable();
@@ -40,7 +40,7 @@ namespace App.Server
         }
         public bool Add(Country[] cs)
         {
-            for (int i=0; i< cs.Length; i++)
+            for (int i = 0; i < cs.Length; i++)
             {
                 if (!Add(cs[i]))
                 {
@@ -60,7 +60,7 @@ namespace App.Server
             DataRow row = ParamTable.NewRow();
             row[Utils.CountryParam.Text] = country.Name;
             Grade[] grades = country.GetGrades();
-            for (int i=0; i < grades.Length; i++)
+            for (int i = 0; i < grades.Length; i++)
             {
                 row[Utils.Categories[i].Text] = grades[i].Score;
             }
@@ -82,11 +82,11 @@ namespace App.Server
                 j++;
             }
             Array.Sort(scores, names);
-            for (int i=0; i<scores.Length; i++)
+            for (int i = 0; i < scores.Length; i++)
             {
                 DataRow row = ScoreTable.NewRow();
-                row[Utils.Rank.Text] = i+1;
-                row[Utils.CountryScore.Text] = names[scores.Length-i-1];
+                row[Utils.Rank.Text] = i + 1;
+                row[Utils.CountryScore.Text] = names[scores.Length - i - 1];
                 row[Utils.Score.Text] = decimal.Round((decimal)scores[scores.Length - i - 1], 3);
                 ScoreTable.Rows.Add(row);
                 scoreTableName2Rows.Add(names[scores.Length - i - 1], row);
@@ -116,7 +116,7 @@ namespace App.Server
         public bool[] GetScoreFilter()
         {
             bool[] x = new bool[scoreFilter.Length];
-            for (int i=0; i<scoreFilter.Length; i++)
+            for (int i = 0; i < scoreFilter.Length; i++)
             {
                 x[i] = scoreFilter[i];
             }
@@ -155,6 +155,53 @@ namespace App.Server
             }
             minScore = scores.Min();
             maxScore = scores.Max();
+        }
+        public void GetMinMaxCountry(out Country minCountry, out Country maxCountry)
+        {
+            int[][] scores = new int[Utils.Categories.Length][];
+            for (int i = 0; i < Utils.Categories.Length; i++)
+            {
+                scores[i] = new int[countries.Count()];
+            }
+            int j = 0;
+            foreach (KeyValuePair<string, Country> kv in countries)
+            {
+                Grade[] grades = kv.Value.GetGrades();
+                for (int i = 0; i < Utils.Categories.Length; i++)
+                {
+                    scores[i][j] = grades[i].Score;
+                }
+                j++;
+            }
+            Grade[] mins = new Grade[Utils.Categories.Length];
+            Grade[] maxs = new Grade[Utils.Categories.Length];
+            for (int i = 0; i < Utils.Categories.Length; i++)
+            {
+                mins[i] = new Grade(scores[i].Min());
+                maxs[i] = new Grade(scores[i].Max());
+            }
+            minCountry = new Country("", mins);
+            maxCountry = new Country("", maxs);
+        }
+        public void Filter(Country minCountry, Country maxCountry)
+        {
+            List<string> names = new List<string>();
+            Grade[] minGrades = minCountry.GetGrades();
+            Grade[] maxGrades = maxCountry.GetGrades();
+            foreach (KeyValuePair<string, Country> kv in countries)
+            {
+                Grade[] grades = kv.Value.GetGrades();
+                for (int i = 0; i < Utils.Categories.Length; i++)
+                {
+                    if (minGrades[i].Score > grades[i].Score || grades[i].Score > maxGrades[i].Score)
+                    {
+                        names.Add(kv.Key);
+                        break;
+                    }
+                }
+
+            }
+            Remove(names.ToArray());
         }
     }
 }

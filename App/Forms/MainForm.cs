@@ -111,5 +111,17 @@ namespace App.Forms
                 table.Filter(form.MinScore, form.MaxScore);
             }
         }
+
+        private void FilterParamButton_Click(object sender, EventArgs e)
+        {
+            Country minCountry, maxCountry;
+            table.GetMinMaxCountry(out minCountry, out maxCountry);
+            ParamFilterForm form = new ParamFilterForm(minCountry, maxCountry);
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                table.Filter(form.MinCountry, form.MaxCountry);
+            }
+        }
     }
 }
