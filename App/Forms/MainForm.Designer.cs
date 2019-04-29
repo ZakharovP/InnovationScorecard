@@ -140,6 +140,7 @@ namespace App.Forms
             this.clearRegistryToolStripMenuItem.Name = "clearRegistryToolStripMenuItem";
             this.clearRegistryToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.clearRegistryToolStripMenuItem.Text = "Clear Registry";
+            this.clearRegistryToolStripMenuItem.Click += new System.EventHandler(this.clearRegistryToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 

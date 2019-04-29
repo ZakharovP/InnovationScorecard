@@ -1,5 +1,6 @@
 ﻿using App.Server;
 using Lib;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,9 @@ namespace App.Forms
         private const string ResourcesFolder = "Resources";
         private static string ResourcesFullFolder = Path.GetFullPath(ResourcesFolder);
         private const string DefaultFile = "default.xml";
+        private const string SubKey = @"INNOVATIONSCORECARD";
+        private const string KeyName = @"LASTFILE";
+        private const string Title = "2019 International Innovation Scorecard";
         public MainForm()
         {
             InitializeComponent();
@@ -27,7 +31,9 @@ namespace App.Forms
 
         private void Form_Load(object sender, EventArgs e)
         {
-            string fileName = Path.Combine(ResourcesFolder, DefaultFile);
+            string file = GetLastFile();
+            string fileName = Path.Combine(ResourcesFolder, file);
+            UpdateTitle(file);
             Country[] countries;
             using (StreamReader sr = new StreamReader(new FileStream(fileName, FileMode.Open, FileAccess.Read)))
             {
@@ -182,8 +188,44 @@ namespace App.Forms
                 {
                     table.Write(sw);
                 }
+                SetLastFile(Path.GetFileName(saveFileDialog.FileName));
                 MessageBox.Show($@"Save as: file {saveFileDialog.FileName} is saved", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void clearRegistryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Registry.CurrentUser.DeleteSubKeyTree(SubKey);
+            MessageBox.Show(@"Delete Registry Key: done", @"", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private string GetLastFile()
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey(SubKey, true);
+            if (rk == null || !File.Exists(Path.Combine(ResourcesFolder, rk.GetValue(KeyName).ToString())))
+            {
+                SetLastFile(DefaultFile);
+                rk = Registry.CurrentUser.OpenSubKey(SubKey);
+            }
+            return rk.GetValue(KeyName).ToString();
+        }
+
+        private void SetLastFile(string file)
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey(SubKey, true);
+            if (rk == null)
+            {
+                rk = Registry.CurrentUser.CreateSubKey(SubKey, true);
+            }
+            if (rk.GetValue(KeyName) == null)
+            {
+                rk.CreateSubKey(KeyName, true);
+            }
+            rk.SetValue(KeyName, file);
+            UpdateTitle(file);
+        }
+        private void UpdateTitle(string file)
+        {
+            Text = $@"{Title} - {Path.GetFileName(file)}";
         }
     }
 }
