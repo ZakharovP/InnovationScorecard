@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -217,6 +218,14 @@ namespace App.Server
                 paramTableName2Rows[name][Utils.Categories[i].Text] = newGrades[i].Score;
             }
             UpdateScoreTable();
+        }
+        public void Write(StreamWriter sw)
+        {
+            Utils.Serialize(sw, countries.Values.ToArray());
+        }
+        public Country[] Read(StreamReader sr)
+        {
+            return Utils.Deserialize(sr);
         }
     }
 }

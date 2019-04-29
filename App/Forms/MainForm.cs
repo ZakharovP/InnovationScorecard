@@ -17,6 +17,7 @@ namespace App.Forms
     {
         private Table table;
         private const string ResourcesFolder = "Resources";
+        private static string ResourcesFullFolder = Path.GetFullPath(ResourcesFolder);
         private const string DefaultFile = "default.xml";
         public MainForm()
         {
@@ -33,11 +34,6 @@ namespace App.Forms
                 countries = Utils.Deserialize(sr);
             }
             table.Add(countries);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void SelectButton_Click(object sender, EventArgs e)
@@ -161,6 +157,33 @@ namespace App.Forms
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = "xml";
+            saveFileDialog.Filter = "XML file (*.xml)|*.xml";
+            saveFileDialog.InitialDirectory = ResourcesFullFolder;
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                if (ResourcesFullFolder != Path.GetDirectoryName(saveFileDialog.FileName))
+                {
+                    MessageBox.Show($@"Save as: please save file in {ResourcesFullFolder} folder", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (Path.GetFileName(saveFileDialog.FileName) == DefaultFile)
+                {
+                    MessageBox.Show($@"Save as: it is not allowed to change the {DefaultFile} file", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                using (StreamWriter sw = new StreamWriter(new FileStream(saveFileDialog.FileName, FileMode.OpenOrCreate, FileAccess.Write)))
+                {
+                    table.Write(sw);
+                }
+                MessageBox.Show($@"Save as: file {saveFileDialog.FileName} is saved", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
