@@ -20,6 +20,7 @@ namespace App.Forms
         private const string ResourcesFolder = "Resources";
         private static string ResourcesFullFolder = Path.GetFullPath(ResourcesFolder);
         private const string DefaultFile = "default.xml";
+        private const string NewTag = "New...";
         private const string SubKey = @"INNOVATIONSCORECARD";
         private const string KeyName = @"LASTFILE";
         private const string Title = "2019 International Innovation Scorecard";
@@ -32,6 +33,11 @@ namespace App.Forms
         private void Form_Load(object sender, EventArgs e)
         {
             string file = GetLastFile();
+            if (file == NewTag)
+            {
+                SetLastFile(DefaultFile);
+                file = DefaultFile;
+            }
             string fileName = Path.Combine(ResourcesFolder, file);
             UpdateTitle(file);
             Country[] countries;
@@ -201,10 +207,22 @@ namespace App.Forms
         private string GetLastFile()
         {
             RegistryKey rk = Registry.CurrentUser.OpenSubKey(SubKey, true);
-            if (rk == null || !File.Exists(Path.Combine(ResourcesFolder, rk.GetValue(KeyName).ToString())))
+            if (rk == null)
             {
                 SetLastFile(DefaultFile);
                 rk = Registry.CurrentUser.OpenSubKey(SubKey);
+            }
+            else
+            {
+                if (rk.GetValue(KeyName).ToString() == NewTag)
+                {
+                    return NewTag;
+                }
+                if (!File.Exists(Path.Combine(ResourcesFolder, rk.GetValue(KeyName).ToString())))
+                {
+                    SetLastFile(DefaultFile);
+                    rk = Registry.CurrentUser.OpenSubKey(SubKey);
+                }
             }
             return rk.GetValue(KeyName).ToString();
         }
@@ -226,6 +244,37 @@ namespace App.Forms
         private void UpdateTitle(string file)
         {
             Text = $@"{Title} - {Path.GetFileName(file)}";
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string currentFile = GetLastFile();
+            if (currentFile == DefaultFile)
+            {
+                MessageBox.Show($@"Save: it is not allowed to change the {DefaultFile} file", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (currentFile == NewTag)
+            {
+                saveAsToolStripMenuItem_Click(sender, e);
+                return;
+            }
+            string filePath = Path.Combine(ResourcesFolder, currentFile);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+            using (StreamWriter sw = new StreamWriter(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write)))
+            {
+                table.Write(sw);
+            }
+            MessageBox.Show($@"Save: file {filePath} is saved", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            table.Clear();
+            SetLastFile(NewTag);
         }
     }
 }

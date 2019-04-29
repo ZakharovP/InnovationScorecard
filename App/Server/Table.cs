@@ -227,5 +227,13 @@ namespace App.Server
         {
             return Utils.Deserialize(sr);
         }
+        public void Clear()
+        {
+            countries.Clear();
+            paramTableName2Rows.Clear();
+            scoreTableName2Rows.Clear();
+            ParamTable.Clear();
+            ScoreTable.Clear();
+        }
     }
 }
