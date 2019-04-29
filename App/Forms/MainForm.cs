@@ -276,5 +276,37 @@ namespace App.Forms
             table.Clear();
             SetLastFile(NewTag);
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.DefaultExt = "xml";
+            openFileDialog.Filter = "XML file (*.xml)|*.xml";
+            openFileDialog.InitialDirectory = ResourcesFullFolder;
+
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                OpenImpl(openFileDialog.FileName);
+            }
+        }
+        public void OpenImpl(string fileName)
+        {
+            string d = Path.GetDirectoryName(fileName);
+            string f = Path.GetFileName(fileName);
+            if (d != ResourcesFullFolder)
+            {
+                MessageBox.Show($@"Open: please open file from {ResourcesFullFolder} folder", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Country[] countries;
+            using (StreamReader reader = new StreamReader(new FileStream(fileName, FileMode.Open, FileAccess.Read)))
+            {
+                countries = Utils.Deserialize(reader);
+            }
+            table.Clear();
+            table.Add(countries);
+            SetLastFile(f);
+        }
     }
 }
