@@ -122,6 +122,7 @@ namespace App.Forms
             this.openResentToolStripMenuItem.Name = "openResentToolStripMenuItem";
             this.openResentToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.openResentToolStripMenuItem.Text = "Open Resent";
+            this.openResentToolStripMenuItem.Click += new System.EventHandler(this.openResentToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 

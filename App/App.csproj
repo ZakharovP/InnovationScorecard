@@ -58,6 +58,12 @@
     <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\OpenRecentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OpenRecentForm.Designer.cs">
+      <DependentUpon>OpenRecentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ParamFilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OpenRecentForm.resx">
+      <DependentUpon>OpenRecentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ParamFilterForm.resx">
       <DependentUpon>ParamFilterForm.cs</DependentUpon>

@@ -290,7 +290,7 @@ namespace App.Forms
                 OpenImpl(openFileDialog.FileName);
             }
         }
-        public void OpenImpl(string fileName)
+        private void OpenImpl(string fileName)
         {
             string d = Path.GetDirectoryName(fileName);
             string f = Path.GetFileName(fileName);
@@ -307,6 +307,22 @@ namespace App.Forms
             table.Clear();
             table.Add(countries);
             SetLastFile(f);
+        }
+
+        private void openResentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] filesFullName = Directory.GetFiles(ResourcesFullFolder);
+            string[] files = new string[filesFullName.Length];
+            for (int i=0; i<filesFullName.Length; i++)
+            {
+                files[i] = Path.GetFileName(filesFullName[i]);
+            }
+            OpenRecentForm form = new OpenRecentForm(files);
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                OpenImpl(Path.GetFullPath(Path.Combine(ResourcesFolder, form.SelectedFile)));
+            }
         }
     }
 }
