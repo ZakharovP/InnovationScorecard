@@ -87,5 +87,27 @@ namespace App.Properties {
                 return ResourceManager.GetString("_default", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # The Innovation Scorecard App
+        ///
+        ///Help, I need somebody
+        ///Help, not just anybody
+        ///Help, you know I need someone, helpWhen I was younger, so much younger than today
+        ///I never needed anybody&apos;s help in any way
+        ///But now these days are gone, I&apos;m not so self assured
+        ///Now I find I&apos;ve changed my mind and opened up the doorsHelp me if you can, I&apos;m feeling down
+        ///And I do appreciate you being round
+        ///Help me, get my feet back on the ground
+        ///Won&apos;t you please, please help me
+        ///Related
+        ///
+        ///And now my life has changed in oh so [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
     }
 }

@@ -71,6 +71,7 @@ namespace App.Forms
             this.UpdateParamButton = new System.Windows.Forms.Button();
             this.FilterParamButton = new System.Windows.Forms.Button();
             this.DeleteParamButton = new System.Windows.Forms.Button();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParamDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScoreDataGridView)).BeginInit();
@@ -161,7 +162,8 @@ namespace App.Forms
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.authorToolStripMenuItem,
             this.sourceCodeToolStripMenuItem,
-            this.sourceDataToolStripMenuItem});
+            this.sourceDataToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
@@ -169,21 +171,21 @@ namespace App.Forms
             // authorToolStripMenuItem
             // 
             this.authorToolStripMenuItem.Name = "authorToolStripMenuItem";
-            this.authorToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.authorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.authorToolStripMenuItem.Text = "Author";
             this.authorToolStripMenuItem.Click += new System.EventHandler(this.authorToolStripMenuItem_Click);
             // 
             // sourceCodeToolStripMenuItem
             // 
             this.sourceCodeToolStripMenuItem.Name = "sourceCodeToolStripMenuItem";
-            this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.sourceCodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sourceCodeToolStripMenuItem.Text = "Source code";
             this.sourceCodeToolStripMenuItem.Click += new System.EventHandler(this.sourceCodeToolStripMenuItem_Click);
             // 
             // sourceDataToolStripMenuItem
             // 
             this.sourceDataToolStripMenuItem.Name = "sourceDataToolStripMenuItem";
-            this.sourceDataToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.sourceDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sourceDataToolStripMenuItem.Text = "Source data";
             this.sourceDataToolStripMenuItem.Click += new System.EventHandler(this.sourceDataToolStripMenuItem_Click);
             // 
@@ -361,6 +363,13 @@ namespace App.Forms
             this.DeleteParamButton.UseVisualStyleBackColor = true;
             this.DeleteParamButton.Click += new System.EventHandler(this.DeleteParamButton_Click);
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -434,6 +443,7 @@ namespace App.Forms
         private System.Windows.Forms.Button UpdateParamButton;
         private System.Windows.Forms.Button FilterParamButton;
         private System.Windows.Forms.Button DeleteParamButton;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
     }
 }
 

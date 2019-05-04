@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace App.Forms
         private const string ResourcesFolder = "Resources";
         private static string ResourcesFullFolder = Path.GetFullPath(ResourcesFolder);
         private const string DefaultFile = "default.xml";
+        private const string HelpFile = "Help.txt";
         private const string NewTag = "New...";
         private const string SubKey = @"INNOVATIONSCORECARD";
         private const string KeyName = @"LASTFILE";
@@ -323,6 +325,11 @@ namespace App.Forms
             {
                 OpenImpl(Path.GetFullPath(Path.Combine(ResourcesFolder, form.SelectedFile)));
             }
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(Path.GetFullPath(Path.Combine(ResourcesFolder, HelpFile)));
         }
     }
 }
