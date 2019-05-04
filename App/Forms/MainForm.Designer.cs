@@ -44,6 +44,7 @@ namespace App.Forms
             this.authorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceCodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sourceDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ParamDataGridView = new System.Windows.Forms.DataGridView();
             this.CountryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiversityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,7 +72,6 @@ namespace App.Forms
             this.UpdateParamButton = new System.Windows.Forms.Button();
             this.FilterParamButton = new System.Windows.Forms.Button();
             this.DeleteParamButton = new System.Windows.Forms.Button();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ParamDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScoreDataGridView)).BeginInit();
@@ -189,6 +189,13 @@ namespace App.Forms
             this.sourceDataToolStripMenuItem.Text = "Source data";
             this.sourceDataToolStripMenuItem.Click += new System.EventHandler(this.sourceDataToolStripMenuItem_Click);
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            // 
             // ParamDataGridView
             // 
             this.ParamDataGridView.AllowUserToAddRows = false;
@@ -271,6 +278,7 @@ namespace App.Forms
             this.ScoreDataGridView.ReadOnly = true;
             this.ScoreDataGridView.Size = new System.Drawing.Size(315, 327);
             this.ScoreDataGridView.TabIndex = 2;
+            this.ScoreDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ScoreDataGridView_CellMouseDoubleClick);
             // 
             // RankColumn
             // 
@@ -362,13 +370,6 @@ namespace App.Forms
             this.DeleteParamButton.Text = "Delete";
             this.DeleteParamButton.UseVisualStyleBackColor = true;
             this.DeleteParamButton.Click += new System.EventHandler(this.DeleteParamButton_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // MainForm
             // 

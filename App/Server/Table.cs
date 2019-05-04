@@ -12,11 +12,15 @@ namespace App.Server
 {
     public class Table
     {
-        public DataTable ParamTable { private set; get; }
-        public DataTable ScoreTable { private set; get; }
         /// <summary>
-        /// Dictionary countries contains mapping of country name to country object
+        /// Table with parameters
         /// </summary>
+        public DataTable ParamTable { private set; get; }
+        /// <summary>
+        /// Table with scores
+        /// </summary>
+        public DataTable ScoreTable { private set; get; }
+
         private Dictionary<string, Country> countries = new Dictionary<string, Country>();
         private Dictionary<string, DataRow> paramTableName2Rows = new Dictionary<string, DataRow>();
         private Dictionary<string, DataRow> scoreTableName2Rows = new Dictionary<string, DataRow>();
@@ -39,24 +43,29 @@ namespace App.Server
             ScoreTable.Columns.Add(Utils.CountryScore.Text, typeof(string));
             ScoreTable.Columns.Add("Score", typeof(decimal));
         }
-        public bool Add(Country[] cs)
+        /// <summary>
+        /// Add list of countries
+        /// </summary>
+        /// <param name="countries">List of countries</param>
+        /// <returns>False if country with the same name already exists</returns>
+        public bool Add(Country[] countries)
         {
-            for (int i = 0; i < cs.Length; i++)
+            for (int i = 0; i < countries.Length; i++)
             {
-                if (!Add(cs[i]))
+                if (this.countries.ContainsKey(countries[i].Name))
                 {
                     return false;
                 }
             }
+            for (int i = 0; i < countries.Length; i++)
+            {
+                Add(countries[i]);
+            }
             UpdateScoreTable();
             return true;
         }
-        private bool Add(Country country)
-        {
-            if (countries.ContainsKey(country.Name))
-            {
-                return false;
-            }
+        private void Add(Country country)
+        {     
             countries.Add(country.Name, country);
             DataRow row = ParamTable.NewRow();
             row[Utils.CountryParam.Text] = country.Name;
@@ -67,7 +76,6 @@ namespace App.Server
             }
             ParamTable.Rows.Add(row);
             paramTableName2Rows.Add(country.Name, row);
-            return true;
         }
         public void UpdateScoreTable()
         {

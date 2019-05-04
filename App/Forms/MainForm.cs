@@ -331,5 +331,20 @@ namespace App.Forms
         {
             Process.Start(Path.GetFullPath(Path.Combine(ResourcesFolder, HelpFile)));
         }
+
+        private void ScoreDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (ScoreDataGridView.SelectedRows.Count == 1)
+            {
+                DataRow row = ((DataRowView)ScoreDataGridView.SelectedRows[0].DataBoundItem).Row;
+                table.GetCountry(row, out Country country);
+                CountryZoomForm form = new CountryZoomForm(country);
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show($@"Please double click one row", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
