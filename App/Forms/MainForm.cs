@@ -314,12 +314,15 @@ namespace App.Forms
         private void openResentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] filesFullName = Directory.GetFiles(ResourcesFullFolder);
-            string[] files = new string[filesFullName.Length];
+            List<string> files = new List<string>();
             for (int i=0; i<filesFullName.Length; i++)
             {
-                files[i] = Path.GetFileName(filesFullName[i]);
+                if (Path.GetExtension(filesFullName[i]) == ".xml")
+                {
+                    files.Add(Path.GetFileName(filesFullName[i]));
+                }
             }
-            OpenRecentForm form = new OpenRecentForm(files);
+            OpenRecentForm form = new OpenRecentForm(files.ToArray());
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
