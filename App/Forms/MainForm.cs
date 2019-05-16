@@ -43,11 +43,18 @@ namespace App.Forms
             string fileName = Path.Combine(ResourcesFolder, file);
             UpdateTitle(file);
             Country[] countries;
-            using (StreamReader sr = new StreamReader(new FileStream(fileName, FileMode.Open, FileAccess.Read)))
+            try
             {
-                countries = Utils.Deserialize(sr);
+                using (StreamReader sr = new StreamReader(new FileStream(fileName, FileMode.Open, FileAccess.Read)))
+                {
+                    countries = Utils.Deserialize(sr);
+                }
+                table.Add(countries);
             }
-            table.Add(countries);
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show(@"AHTUNG: default.xml was not found, but you can still enjoy with program, just click ok button", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void SelectButton_Click(object sender, EventArgs e)
@@ -315,7 +322,7 @@ namespace App.Forms
         {
             string[] filesFullName = Directory.GetFiles(ResourcesFullFolder);
             List<string> files = new List<string>();
-            for (int i=0; i<filesFullName.Length; i++)
+            for (int i = 0; i < filesFullName.Length; i++)
             {
                 if (Path.GetExtension(filesFullName[i]) == ".xml")
                 {
